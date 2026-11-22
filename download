@@ -1,9 +1,0 @@
-__pycache__/
-*.py[cod]
-figure-build/
-*.aux
-*.log
-*.fls
-*.xdv
-.env
-.env.*

@@ -1,0 +1,1 @@
+Original teaching workflow without experimental data. Synchronized temperature and pressure observations share a predefined window identifier. Each branch produces one scalar summary per window, in K and kPa respectively. Only windows with both summaries are joined; concatenation preserves the two physical units and does not average them. Arrows denote processing dependencies.
