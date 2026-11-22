@@ -1,0 +1,111 @@
+% Generated from measured text. Edit source freely; regenerate geometry after edits.
+\documentclass[tikz,border=0pt]{standalone}
+\def\FigureLanguage{zh}
+\def\FigurePrimary{zh}
+\def\FigureCJKFont{SimSun}
+\def\FigureLatinFont{Times New Roman}
+\def\FigureMathFont{TeX Gyre Termes Math}
+% Put before academic-preamble.tex; override these commands before input if needed.
+\providecommand{\FigureLanguage}{zh}
+\providecommand{\FigurePrimary}{zh}
+\newif\ifFigureEnglishOnly
+\newif\ifFigureBilingual
+\newif\ifFigureEnglishFirst
+\def\FigureLangEnglish{en}
+\def\FigureLangChinese{zh}
+\def\FigureLangBilingual{bi}
+\edef\FigureSelectedLanguage{\FigureLanguage}
+\edef\FigureSelectedPrimary{\FigurePrimary}
+\ifx\FigureSelectedLanguage\FigureLangEnglish
+  \FigureEnglishOnlytrue
+\else\ifx\FigureSelectedLanguage\FigureLangBilingual
+  \FigureBilingualtrue
+\else\ifx\FigureSelectedLanguage\FigureLangChinese
+\else
+  \PackageError{paperfigure}{Unknown FigureLanguage: \FigureLanguage}{Use zh, en, or bi.}
+\fi\fi\fi
+\ifx\FigureSelectedPrimary\FigureLangEnglish
+  \FigureEnglishFirsttrue
+\else\ifx\FigureSelectedPrimary\FigureLangChinese
+\else
+  \PackageError{paperfigure}{Unknown FigurePrimary: \FigurePrimary}{Use zh or en.}
+\fi\fi
+\typeout{FIGURE-LANGUAGE: \FigureLanguage}
+\typeout{FIGURE-PRIMARY: \FigurePrimary}
+% Ordinary text must be TeX-escaped; shared math is trusted TeX.
+\newcommand{\FigureLabelContent}[3]{%
+  \ifFigureBilingual
+    \ifFigureEnglishFirst #2\\[.25ex]#1\else #1\\[.25ex]#2\fi
+  \else
+    \ifFigureEnglishOnly #2\else #1\fi
+  \fi
+  \if\relax\detokenize{#3}\relax\else\\[.25ex]$#3$\fi}
+% Optional width enables genuine paragraph wrapping, without reducing type size.
+\newcommand{\FigureLabel}[4][]{%
+  \if\relax\detokenize{#1}\relax
+    \shortstack[c]{\FigureLabelContent{#2}{#3}{#4}}%
+  \else
+    \parbox[c]{#1}{\centering\FigureLabelContent{#2}{#3}{#4}\par}%
+  \fi}
+
+% Input after documentclass, before begin{document}; XeLaTeX/LuaLaTeX.
+% Authors may define the Figure*Font commands before input to override defaults.
+% English-only documents can set FigureLanguage=en without loading CJK support.
+\providecommand{\FigureLanguage}{zh}
+\providecommand{\FigurePrimary}{zh}
+\makeatletter
+\@ifundefined{ifFigureEnglishOnly}{%
+  \newif\ifFigureEnglishOnly
+  \def\FigureFontEnglishMode{en}%
+  \edef\FigureFontSelectedMode{\FigureLanguage}%
+  \ifx\FigureFontSelectedMode\FigureFontEnglishMode\FigureEnglishOnlytrue\fi
+}{}
+\makeatother
+\providecommand{\FigureCJKFont}{SimSun}
+\providecommand{\FigureLatinFont}{Times New Roman}
+\providecommand{\FigureMathFont}{TeX Gyre Termes Math}
+\ifFigureEnglishOnly
+  \usepackage{fontspec}
+  \typeout{FIGURE-CJK-FONT: not requested (English-only)}
+\else
+  \usepackage[UTF8,fontset=none]{ctex}
+\fi
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\ifFigureEnglishOnly\else
+\IfFontExistsTF{\FigureCJKFont}
+  {\setCJKmainfont{\FigureCJKFont}\typeout{FIGURE-CJK-FONT: \FigureCJKFont}}
+  {\setCJKmainfont{FandolSong-Regular}
+   \typeout{FIGURE-CJK-FONT: FandolSong-Regular (fallback)}
+   \PackageWarningNoLine{paperfigure}{Chinese font fallback: FandolSong-Regular}}
+\fi
+\IfFontExistsTF{\FigureLatinFont}
+  {\setmainfont{\FigureLatinFont}\typeout{FIGURE-LATIN-FONT: \FigureLatinFont}}
+  {\setmainfont{Latin Modern Roman}
+   \typeout{FIGURE-LATIN-FONT: Latin Modern Roman (fallback)}
+   \PackageWarningNoLine{paperfigure}{Latin font fallback: Latin Modern Roman}}
+\IfFontExistsTF{\FigureMathFont}
+  {\setmathfont{\FigureMathFont}\typeout{FIGURE-MATH-FONT: \FigureMathFont}}
+  {\setmathfont{latinmodern-math.otf}
+   \typeout{FIGURE-MATH-FONT: Latin Modern Math (fallback)}
+   \PackageWarningNoLine{paperfigure}{Requested math font unavailable; using Latin Modern Math}}
+% For individual bold letters/Greek symbols, not a replacement for bold equations.
+% symbf follows bold-style; use symbfup/symbfit for explicit upright/italic.
+\providecommand{\FigureBoldSymbol}[1]{\symbf{#1}}
+
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\fontsize{10}{12.5}\selectfont
+\begin{tikzpicture}[x=1mm,y=-1mm,line width=.6pt,
+  every node/.style={inner sep=0pt,outer sep=0pt},>=Stealth]
+\path[use as bounding box] (0,0) rectangle (85.000000,57.000000);
+\draw (4.000000,4.000000) rectangle (81.000000,15.000000);
+\draw (4.000000,23.000000) rectangle (81.000000,34.000000);
+\draw (4.000000,42.000000) rectangle (81.000000,53.000000);
+\draw[->] (42.500000,15.000000) -- (42.500000,23.000000);
+\draw[->] (42.500000,34.000000) -- (42.500000,42.000000);
+\node[anchor=center] at (42.500000,9.500000) {\FigureLabel[73mm]{读取带时间窗标识的观测}{}{}};
+\node[anchor=center] at (42.500000,28.500000) {\FigureLabel[73mm]{检查缺失并筛选完整窗口}{}{}};
+\node[anchor=center] at (42.500000,47.500000) {\FigureLabel[73mm]{输出匹配后的观测对}{}{}};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,71 @@
+% Finite glyph regression specimen, not experimental data.
+\documentclass[border=3mm]{standalone}
+\def\FigureLanguage{bi}
+% Input after documentclass, before begin{document}; XeLaTeX/LuaLaTeX.
+% Authors may define the Figure*Font commands before input to override defaults.
+% English-only documents can set FigureLanguage=en without loading CJK support.
+\providecommand{\FigureLanguage}{zh}
+\providecommand{\FigurePrimary}{zh}
+\makeatletter
+\@ifundefined{ifFigureEnglishOnly}{%
+  \newif\ifFigureEnglishOnly
+  \def\FigureFontEnglishMode{en}%
+  \edef\FigureFontSelectedMode{\FigureLanguage}%
+  \ifx\FigureFontSelectedMode\FigureFontEnglishMode\FigureEnglishOnlytrue\fi
+}{}
+\makeatother
+\providecommand{\FigureCJKFont}{SimSun}
+\providecommand{\FigureLatinFont}{Times New Roman}
+\providecommand{\FigureMathFont}{TeX Gyre Termes Math}
+\ifFigureEnglishOnly
+  \usepackage{fontspec}
+  \typeout{FIGURE-CJK-FONT: not requested (English-only)}
+\else
+  \usepackage[UTF8,fontset=none]{ctex}
+\fi
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\ifFigureEnglishOnly\else
+\IfFontExistsTF{\FigureCJKFont}
+  {\setCJKmainfont{\FigureCJKFont}\typeout{FIGURE-CJK-FONT: \FigureCJKFont}}
+  {\setCJKmainfont{FandolSong-Regular}
+   \typeout{FIGURE-CJK-FONT: FandolSong-Regular (fallback)}
+   \PackageWarningNoLine{paperfigure}{Chinese font fallback: FandolSong-Regular}}
+\fi
+\IfFontExistsTF{\FigureLatinFont}
+  {\setmainfont{\FigureLatinFont}\typeout{FIGURE-LATIN-FONT: \FigureLatinFont}}
+  {\setmainfont{Latin Modern Roman}
+   \typeout{FIGURE-LATIN-FONT: Latin Modern Roman (fallback)}
+   \PackageWarningNoLine{paperfigure}{Latin font fallback: Latin Modern Roman}}
+\IfFontExistsTF{\FigureMathFont}
+  {\setmathfont{\FigureMathFont}\typeout{FIGURE-MATH-FONT: \FigureMathFont}}
+  {\setmathfont{latinmodern-math.otf}
+   \typeout{FIGURE-MATH-FONT: Latin Modern Math (fallback)}
+   \PackageWarningNoLine{paperfigure}{Requested math font unavailable; using Latin Modern Math}}
+% For individual bold letters/Greek symbols, not a replacement for bold equations.
+% symbf follows bold-style; use symbfup/symbfit for explicit upright/italic.
+\providecommand{\FigureBoldSymbol}[1]{\symbf{#1}}
+
+\usepackage{array}
+\begin{document}
+\begin{minipage}{174mm}
+\fontsize{10}{14}\selectfont
+\centering Academic symbol coverage / 学术常用符号\\[3mm]
+\begin{tabular}{@{}p{31mm}p{137mm}@{}}
+Greek lowercase & $\alpha\ \beta\ \gamma\ \delta\ \epsilon\ \zeta\ \eta\ \theta\ \iota\ \kappa\ \lambda\ \mu\ \nu\ \xi\ o\ \pi\ \rho\ \sigma\ \tau\ \upsilon\ \phi\ \chi\ \psi\ \omega$\\[2mm]
+Greek variants & $\varepsilon\ \vartheta\ \varkappa\ \varpi\ \varrho\ \varsigma\ \varphi$\\[2mm]
+Greek capitals & $\Gamma\ \Delta\ \Theta\ \Lambda\ \Xi\ \Pi\ \Sigma\ \Upsilon\ \Phi\ \Psi\ \Omega$\\[2mm]
+Relations & $=\ \neq\ <\ >\ \leq\ \geq\ \ll\ \gg\ \approx\ \simeq\ \sim\ \equiv\ \propto\ \cong$\\[2mm]
+Operators & $+\ -\ \pm\ \mp\ \times\ \div\ \cdot\ \circ\ \otimes\ \oplus\ \odot\ \perp\ \parallel$\\[2mm]
+Sets and logic & $\in\ \notin\ \ni\ \subset\ \subseteq\ \supset\ \supseteq\ \cup\ \cap\ \setminus\ \emptyset\ \forall\ \exists\ \neg\ \land\ \lor$\\[2mm]
+Calculus & $\partial\ \nabla\ \int_a^b f(x)\,\mathrm{d}x\quad\iint_D f\,\mathrm{d}A\quad\oint_C f\,\mathrm{d}s\quad\sum_{i=1}^{n}x_i\quad\prod_{i=1}^{n}x_i\quad\lim_{n\to\infty}a_n$\\[2mm]
+Probability & $\mathbb{E}[X]\quad\mathbb{P}(A\mid B)\quad\operatorname{Var}(X)\quad\operatorname{Cov}(X,Y)\quad X\sim\mathcal{N}(\mu,\sigma^2)\quad\hat{\theta}\quad\bar{x}$\\[2mm]
+Alphabets & $\mathbb{R}\ \mathbb{N}\ \mathbb{Z}\ \mathbb{Q}\ \mathbb{C}\quad\mathcal{L}\ \mathcal{D}\quad\mathfrak{g}\quad\symbf{x}\ \symbf{\Sigma}\quad\mathrm{d}\ \mathrm{e}$\\[2mm]
+Arrows & $\leftarrow\ \rightarrow\ \leftrightarrow\ \Leftarrow\ \Rightarrow\ \Leftrightarrow\ \mapsto\ \uparrow\ \downarrow\ \longrightarrow$\\[2mm]
+Accents and norms & $\hat{x}\ \bar{x}\ \tilde{x}\ \vec{v}\ \dot{x}\ \ddot{x}\ x^{\prime}\quad\lVert x\rVert_2\quad\lvert x\rvert\quad\langle x,y\rangle\quad\sqrt{x}\quad\frac{a}{b}$\\[2mm]
+Matrices & $\begin{bmatrix}a&b\\c&d\end{bmatrix}\quad A^{\mathsf{T}}\quad A^{-1}\quad\det(A)\quad\operatorname{tr}(A)$\\[2mm]
+Units and punctuation & $25\,{}^{\circ}\mathrm{C}\quad 300\,\mathrm{K}\quad 10\,\mathrm{kPa}\quad 2\,\mathrm{W\,m^{-2}}$\\
+ & 中文：温度、压力；单位（示例）。English: commas, primes and \% signs.\\
+\end{tabular}
+\end{minipage}
+\end{document}

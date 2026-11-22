@@ -1,0 +1,44 @@
+% Input after documentclass, before begin{document}; XeLaTeX/LuaLaTeX.
+% Authors may define the Figure*Font commands before input to override defaults.
+% English-only documents can set FigureLanguage=en without loading CJK support.
+\providecommand{\FigureLanguage}{zh}
+\providecommand{\FigurePrimary}{zh}
+\makeatletter
+\@ifundefined{ifFigureEnglishOnly}{%
+  \newif\ifFigureEnglishOnly
+  \def\FigureFontEnglishMode{en}%
+  \edef\FigureFontSelectedMode{\FigureLanguage}%
+  \ifx\FigureFontSelectedMode\FigureFontEnglishMode\FigureEnglishOnlytrue\fi
+}{}
+\makeatother
+\providecommand{\FigureCJKFont}{SimSun}
+\providecommand{\FigureLatinFont}{Times New Roman}
+\providecommand{\FigureMathFont}{TeX Gyre Termes Math}
+\ifFigureEnglishOnly
+  \usepackage{fontspec}
+  \typeout{FIGURE-CJK-FONT: not requested (English-only)}
+\else
+  \usepackage[UTF8,fontset=none]{ctex}
+\fi
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\ifFigureEnglishOnly\else
+\IfFontExistsTF{\FigureCJKFont}
+  {\setCJKmainfont{\FigureCJKFont}\typeout{FIGURE-CJK-FONT: \FigureCJKFont}}
+  {\setCJKmainfont{FandolSong-Regular}
+   \typeout{FIGURE-CJK-FONT: FandolSong-Regular (fallback)}
+   \PackageWarningNoLine{paperfigure}{Chinese font fallback: FandolSong-Regular}}
+\fi
+\IfFontExistsTF{\FigureLatinFont}
+  {\setmainfont{\FigureLatinFont}\typeout{FIGURE-LATIN-FONT: \FigureLatinFont}}
+  {\setmainfont{Latin Modern Roman}
+   \typeout{FIGURE-LATIN-FONT: Latin Modern Roman (fallback)}
+   \PackageWarningNoLine{paperfigure}{Latin font fallback: Latin Modern Roman}}
+\IfFontExistsTF{\FigureMathFont}
+  {\setmathfont{\FigureMathFont}\typeout{FIGURE-MATH-FONT: \FigureMathFont}}
+  {\setmathfont{latinmodern-math.otf}
+   \typeout{FIGURE-MATH-FONT: Latin Modern Math (fallback)}
+   \PackageWarningNoLine{paperfigure}{Requested math font unavailable; using Latin Modern Math}}
+% For individual bold letters/Greek symbols, not a replacement for bold equations.
+% symbf follows bold-style; use symbfup/symbfit for explicit upright/italic.
+\providecommand{\FigureBoldSymbol}[1]{\symbf{#1}}

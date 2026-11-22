@@ -1,0 +1,109 @@
+{
+  "version": "1.0.0",
+  "date": "2026-11-17",
+  "status": "packaged-for-submission-not-published",
+  "archive": "scientific-tikz-figures_v1.0.0.zip",
+  "archive_bytes": 39821,
+  "archive_sha256": "2f7ea788ef117fe1872556bf6a865b6670b4f34ef87bcbf9ec168fe8bd5763d3",
+  "source_files": 22,
+  "source_bytes": 87159,
+  "references_checked": 24,
+  "local_test_passes": 38,
+  "test_failures": 0,
+  "isolated_archive_helper_smoke": "passed",
+  "local_full_edition_unchanged": true,
+  "live_platform_test": false,
+  "marketplace_submitted": false,
+  "external_human_blind_test": false,
+  "files": {
+    "assets/academic-preamble.tex": {
+      "bytes": 2034,
+      "sha256": "e63b28fc5711aa2c90d185091b3b8f61d088c301c29f304b8dd9e56312f0d3d4"
+    },
+    "assets/example-en.caption.txt": {
+      "bytes": 381,
+      "sha256": "16f5c7847d412d820d2cd7c0fd1d9d88544c5f9c5cd61942b8e178314d70b79f"
+    },
+    "assets/example-en.tex": {
+      "bytes": 4215,
+      "sha256": "07f2aa904378bb9576a5bfd573edf55a9180e6a79b7905498d2ddc4b68106a77"
+    },
+    "assets/example-loop-en.caption.txt": {
+      "bytes": 394,
+      "sha256": "22f30942d4ff9197eba26451e2c81ece1050b1219e4d468faf50a1a691fa0ecb"
+    },
+    "assets/example-loop-en.tex": {
+      "bytes": 3710,
+      "sha256": "ed59f0b56a29b2c8443e602417d18c98632f33272b885e07738817bb8a476537"
+    },
+    "assets/example-principle-bi.caption.txt": {
+      "bytes": 1187,
+      "sha256": "dbe890d9bd894ebfea7e274eb9ef3c8aa501acbdde57eda4086455d48eaba1bb"
+    },
+    "assets/example-principle-bi.tex": {
+      "bytes": 5662,
+      "sha256": "b8d4c779928241603a4153fcbd61002471ce20bf23671150ddd8da0726e39a60"
+    },
+    "assets/example-workflow-zh.caption.txt": {
+      "bytes": 121,
+      "sha256": "9685cf92467c8e0ee874372ed6251c28aa123ed11da543b11644d2a9d70f431f"
+    },
+    "assets/example-workflow-zh.tex": {
+      "bytes": 4806,
+      "sha256": "152358677a9466062c278c6513d0d2782c12f021fa888d814e3a047144d1f4a3"
+    },
+    "assets/symbol-coverage.tex": {
+      "bytes": 4381,
+      "sha256": "20a32044e479f151996155bb8756ebfef233b8fd01c39b719282842c6448286e"
+    },
+    "LICENSE.txt": {
+      "bytes": 2072,
+      "sha256": "3ece999c401af54793cac95395c8201617d39e355fd4c08bc92f97a8424293f9"
+    },
+    "README.md": {
+      "bytes": 3961,
+      "sha256": "be37a360b9d18feab49af8f8d7225549dc7b76afa5820c358733fc48902a5e34"
+    },
+    "references/academic-symbols.md": {
+      "bytes": 3591,
+      "sha256": "bb5152ed8fb5176c637d4f60e0b9eb6e4baebca87c8bdf34ee2a4a991068275d"
+    },
+    "references/runtime.md": {
+      "bytes": 3663,
+      "sha256": "67c5efd6250eb2ce29e0e4dd049fa5f1069fb5c1402ee4cd50e35023ec54bf16"
+    },
+    "references/scientific-structure.md": {
+      "bytes": 2932,
+      "sha256": "dc1aaf6954d2160d6b9591517e8224627956ca72807952a942f31cd5c7ae9212"
+    },
+    "references/style-presets.md": {
+      "bytes": 2745,
+      "sha256": "f4b5f0fe1cbec492fee54cd047b691b7d7927ac27ac85c38568bd7b41551cb59"
+    },
+    "references/typography-and-export.md": {
+      "bytes": 4093,
+      "sha256": "609a47dde7edbcd70724fdea3af534c1329655eef6cd63ef6ef07e79297b0569"
+    },
+    "references/validation-record.md": {
+      "bytes": 7712,
+      "sha256": "796dcc8d93bbfeef62c27bd8e18e03f717df7214bcd1adbd0a06398a11680435"
+    },
+    "requirements.txt": {
+      "bytes": 106,
+      "sha256": "de33d37fa5a09ba2fa9ab10d31bbf0eb6923933f04b5c29085a261248f24b915"
+    },
+    "scripts/figure_tool.py": {
+      "bytes": 20226,
+      "sha256": "3a322f02e46855b50a4e5c4976200fd20b69886bd386cc0ffaf567f6a5aac7f1"
+    },
+    "SKILL.md": {
+      "bytes": 7026,
+      "sha256": "1f5509d7c97a9616211870ead867d2b3c13e2effed39052fcd7afc0542df6c87"
+    },
+    "THIRD-PARTY-NOTICES.txt": {
+      "bytes": 2141,
+      "sha256": "956f1855b83384edbe50211adcfad147c7a791afaa111fbf08af0b7383729f0f"
+    }
+  },
+  "limits": "Local compatibility evidence, not platform approval or a complete legal/security certification."
+}

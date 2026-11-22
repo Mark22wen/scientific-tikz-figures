@@ -1,0 +1,131 @@
+\documentclass[tikz,border=0pt]{standalone}
+\def\FigureLanguage{bi}
+\def\FigurePrimary{zh}
+% Put before academic-preamble.tex; override these commands before input if needed.
+\providecommand{\FigureLanguage}{zh}
+\providecommand{\FigurePrimary}{zh}
+\newif\ifFigureEnglishOnly
+\newif\ifFigureBilingual
+\newif\ifFigureEnglishFirst
+\def\FigureLangEnglish{en}
+\def\FigureLangChinese{zh}
+\def\FigureLangBilingual{bi}
+\edef\FigureSelectedLanguage{\FigureLanguage}
+\edef\FigureSelectedPrimary{\FigurePrimary}
+\ifx\FigureSelectedLanguage\FigureLangEnglish
+  \FigureEnglishOnlytrue
+\else\ifx\FigureSelectedLanguage\FigureLangBilingual
+  \FigureBilingualtrue
+\else\ifx\FigureSelectedLanguage\FigureLangChinese
+\else
+  \PackageError{paperfigure}{Unknown FigureLanguage: \FigureLanguage}{Use zh, en, or bi.}
+\fi\fi\fi
+\ifx\FigureSelectedPrimary\FigureLangEnglish
+  \FigureEnglishFirsttrue
+\else\ifx\FigureSelectedPrimary\FigureLangChinese
+\else
+  \PackageError{paperfigure}{Unknown FigurePrimary: \FigurePrimary}{Use zh or en.}
+\fi\fi
+\typeout{FIGURE-LANGUAGE: \FigureLanguage}
+\typeout{FIGURE-PRIMARY: \FigurePrimary}
+% Ordinary text must be TeX-escaped; shared math is trusted TeX.
+\newcommand{\FigureLabelContent}[3]{%
+  \ifFigureBilingual
+    \ifFigureEnglishFirst #2\\[.25ex]#1\else #1\\[.25ex]#2\fi
+  \else
+    \ifFigureEnglishOnly #2\else #1\fi
+  \fi
+  \if\relax\detokenize{#3}\relax\else\\[.25ex]$#3$\fi}
+% Optional width enables genuine paragraph wrapping, without reducing type size.
+\newcommand{\FigureLabel}[4][]{%
+  \if\relax\detokenize{#1}\relax
+    \shortstack[c]{\FigureLabelContent{#2}{#3}{#4}}%
+  \else
+    \parbox[c]{#1}{\centering\FigureLabelContent{#2}{#3}{#4}\par}%
+  \fi}
+
+\def\FigureCJKFont{SimSun}
+\def\FigureLatinFont{Times New Roman}
+\def\FigureMathFont{TeX Gyre Termes Math}
+% Input after documentclass, before begin{document}; XeLaTeX/LuaLaTeX.
+% Authors may define the Figure*Font commands before input to override defaults.
+% English-only documents can set FigureLanguage=en without loading CJK support.
+\providecommand{\FigureLanguage}{zh}
+\providecommand{\FigurePrimary}{zh}
+\makeatletter
+\@ifundefined{ifFigureEnglishOnly}{%
+  \newif\ifFigureEnglishOnly
+  \def\FigureFontEnglishMode{en}%
+  \edef\FigureFontSelectedMode{\FigureLanguage}%
+  \ifx\FigureFontSelectedMode\FigureFontEnglishMode\FigureEnglishOnlytrue\fi
+}{}
+\makeatother
+\providecommand{\FigureCJKFont}{SimSun}
+\providecommand{\FigureLatinFont}{Times New Roman}
+\providecommand{\FigureMathFont}{TeX Gyre Termes Math}
+\ifFigureEnglishOnly
+  \usepackage{fontspec}
+  \typeout{FIGURE-CJK-FONT: not requested (English-only)}
+\else
+  \usepackage[UTF8,fontset=none]{ctex}
+\fi
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\ifFigureEnglishOnly\else
+\IfFontExistsTF{\FigureCJKFont}
+  {\setCJKmainfont{\FigureCJKFont}\typeout{FIGURE-CJK-FONT: \FigureCJKFont}}
+  {\setCJKmainfont{FandolSong-Regular}
+   \typeout{FIGURE-CJK-FONT: FandolSong-Regular (fallback)}
+   \PackageWarningNoLine{paperfigure}{Chinese font fallback: FandolSong-Regular}}
+\fi
+\IfFontExistsTF{\FigureLatinFont}
+  {\setmainfont{\FigureLatinFont}\typeout{FIGURE-LATIN-FONT: \FigureLatinFont}}
+  {\setmainfont{Latin Modern Roman}
+   \typeout{FIGURE-LATIN-FONT: Latin Modern Roman (fallback)}
+   \PackageWarningNoLine{paperfigure}{Latin font fallback: Latin Modern Roman}}
+\IfFontExistsTF{\FigureMathFont}
+  {\setmathfont{\FigureMathFont}\typeout{FIGURE-MATH-FONT: \FigureMathFont}}
+  {\setmathfont{latinmodern-math.otf}
+   \typeout{FIGURE-MATH-FONT: Latin Modern Math (fallback)}
+   \PackageWarningNoLine{paperfigure}{Requested math font unavailable; using Latin Modern Math}}
+% For individual bold letters/Greek symbols, not a replacement for bold equations.
+% symbf follows bold-style; use symbfup/symbfit for explicit upright/italic.
+\providecommand{\FigureBoldSymbol}[1]{\symbf{#1}}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\fontsize{9.5}{11.875}\selectfont
+\ifFigureBilingual
+  \def\H{102}\def\Top{13}\def\TOne{24}\def\TTwo{45}\def\Bottom{58}\def\Note{68}\def\Rule{78}\def\Eq{89}
+\else
+  \def\H{92}\def\Top{11}\def\TOne{21}\def\TTwo{40}\def\Bottom{53}\def\Note{61}\def\Rule{69}\def\Eq{81}
+\fi
+\begin{tikzpicture}[x=1mm,y=-1mm,
+ every node/.style={font=\fontsize{9.5}{11.875}\selectfont,inner sep=0pt},
+ link/.style={line width=.65pt},
+ flow/.style={-{Stealth[length=2mm,width=1.4mm]},line width=.65pt}]
+\path[use as bounding box] (0,0) rectangle (148,\H);
+\node at (74,5) {\FigureLabel{并联导热的等效热阻网络}{Equivalent network for parallel heat conduction}{}};
+% Two reservoirs are physical terminals, not start/end workflow nodes.
+\draw[link] (24,\Top+6) -- (24,\Bottom);
+\draw[link] (124,\Top+6) -- (124,\Bottom);
+\node at (13,\TOne+10) {$T_{\mathrm h}$};
+\node at (136,\TOne+10) {$T_{\mathrm c}$};
+\foreach \y/\r/\q in {\TOne/1/1,\TTwo/2/2} {
+  \draw[link] (24,\y) -- (55,\y);
+  \draw[link,fill=black!7] (55,\y-3) rectangle (93,\y+3);
+  \draw[link] (93,\y) -- (124,\y);
+  \node at (74,\y) {$R_{\r}$};
+  \fill (24,\y) circle[radius=.7mm];
+  \fill (124,\y) circle[radius=.7mm];
+  \draw[flow] (31,\y-4) -- (46,\y-4);
+  \node at (39,\y-8) {$\dot Q_{\q}$};
+}
+\node at (74,\Bottom) {\FigureLabel{两条支路连接相同温度端点}{Both branches connect the same temperature terminals}{}};
+\node at (74,\Note) {\FigureLabel{稳态；理想端点；示意，不按比例}{Steady state; ideal terminals; schematic, not to scale}{}};
+\draw[black!50,line width=.45pt] (6,\Rule) -- (142,\Rule);
+\node at (40,\Eq) {$\displaystyle \dot Q_i=\frac{T_{\mathrm h}-T_{\mathrm c}}{R_i},\quad R_i>0$};
+\node at (109,\Eq) {$\displaystyle \dot Q=\dot Q_1+\dot Q_2$};
+\end{tikzpicture}
+\end{document}

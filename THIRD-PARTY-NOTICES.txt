@@ -1,0 +1,20 @@
+Dependency and provenance notice - 2026-11-17
+
+This text-only package contains project-created instructions, helper code and original teaching examples. It bundles no papers, third-party figure reproductions, model weights, fonts, TeX distribution, Python environment or native libraries. It does not claim that literature review trained model weights. Product distribution terms are in LICENSE.txt.
+
+Python and XeLaTeX / TeX packages are separately installed dependencies. TeX Live comprises components with their own licences. The host agent and execution environment are supplied by the user or platform.
+
+PDF inspection uses pypdfium2, tested at 5.9.0; PNG saving uses Pillow, tested at 12.2.0. pypdfium2 is offered under Apache-2.0 / BSD-3-Clause; PDFium and its dependencies carry separate notices. Pillow's tested metadata identifies MIT-CMU. No dependency binaries are redistributed in this package. If distributing a runtime or hosted derivative later, preserve and review the licences and notices for the actual dependency builds.
+Official sources:
+https://pypdfium2.readthedocs.io/en/stable/readme.html#licensing
+https://pillow.readthedocs.io/en/stable/about.html#license
+
+The marketplace v1.0.0 helper does not import or require PyMuPDF / fitz. Prior local development editions and their test tooling are not part of this distribution.
+
+Fonts are requested from the execution environment: SimSun, Times New Roman, TeX Gyre Termes Math, with disclosed fallbacks. The package contains no font binaries. PDF embedding status is a technical check, not proof of permission to redistribute or host a font. Use fonts under the licence applicable to the actual deployment.
+https://learn.microsoft.com/en-us/typography/fonts/font-faq
+
+The licence and platform terms govern different parties and activities; a free listing is not a public-domain dedication or an open-source release. Creator identity is the account identified on the official listing. The package includes no signature, affiliation or identity invented for the creator.
+Platform sources checked 2026-11-17:
+https://www.agensi.io/terms
+https://www.agensi.io/docs/packaging

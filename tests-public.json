@@ -1,0 +1,637 @@
+{
+  "date": "2026-11-17",
+  "passed": 38,
+  "failed": 0,
+  "categories": {
+    "normal": 15,
+    "boundary": 11,
+    "failure": 12
+  },
+  "cases": [
+    {
+      "name": "helper-alone",
+      "category": "normal",
+      "passed": true,
+      "input": "Only helper source in isolated directory.",
+      "expected": "Runs without sibling imports/assets.",
+      "returncode": 0
+    },
+    {
+      "name": "example-en-build",
+      "category": "normal",
+      "passed": true,
+      "input": "en source, 160 mm, 600 dpi.",
+      "expected": "Compile, inspect and render; preserve genuine review flags.",
+      "returncode": 0,
+      "status": "mechanical-checks-passed",
+      "findings": [
+        "font-fallback"
+      ]
+    },
+    {
+      "name": "example-en-independent-inspection",
+      "category": "normal",
+      "passed": true,
+      "input": "PDF plus PNG checked with separate PDF engine.",
+      "expected": "Vector content, embedded fonts, correct size and PNG DPI.",
+      "png_pixels": [
+        3780,
+        2079
+      ],
+      "dpi": 600.079,
+      "metadata_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "raster_images": 0,
+      "vector_paths": 23,
+      "fonts_embedded": true
+    },
+    {
+      "name": "example-principle-bi-build",
+      "category": "normal",
+      "passed": true,
+      "input": "bi source, 148 mm, 600 dpi.",
+      "expected": "Compile, inspect and render; preserve genuine review flags.",
+      "returncode": 2,
+      "status": "review-required",
+      "findings": [
+        "font-fallback",
+        "small-text"
+      ]
+    },
+    {
+      "name": "example-principle-bi-independent-inspection",
+      "category": "normal",
+      "passed": true,
+      "input": "PDF plus PNG checked with separate PDF engine.",
+      "expected": "Vector content, embedded fonts, correct size and PNG DPI.",
+      "png_pixels": [
+        3497,
+        2410
+      ],
+      "dpi": 600.157,
+      "metadata_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "raster_images": 0,
+      "vector_paths": 18,
+      "fonts_embedded": true
+    },
+    {
+      "name": "example-workflow-zh-build",
+      "category": "normal",
+      "passed": true,
+      "input": "zh source, 85 mm, 300 dpi.",
+      "expected": "Compile, inspect and render; preserve genuine review flags.",
+      "returncode": 0,
+      "status": "mechanical-checks-passed",
+      "findings": [
+        "font-fallback"
+      ]
+    },
+    {
+      "name": "example-workflow-zh-independent-inspection",
+      "category": "normal",
+      "passed": true,
+      "input": "PDF plus PNG checked with separate PDF engine.",
+      "expected": "Vector content, embedded fonts, correct size and PNG DPI.",
+      "png_pixels": [
+        1004,
+        674
+      ],
+      "dpi": 300.025,
+      "metadata_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "raster_images": 0,
+      "vector_paths": 7,
+      "fonts_embedded": true
+    },
+    {
+      "name": "example-loop-en-build",
+      "category": "normal",
+      "passed": true,
+      "input": "en source, 150 mm, 600 dpi.",
+      "expected": "Compile, inspect and render; preserve genuine review flags.",
+      "returncode": 2,
+      "status": "review-required",
+      "findings": [
+        "font-fallback",
+        "small-text"
+      ]
+    },
+    {
+      "name": "example-loop-en-independent-inspection",
+      "category": "normal",
+      "passed": true,
+      "input": "PDF plus PNG checked with separate PDF engine.",
+      "expected": "Vector content, embedded fonts, correct size and PNG DPI.",
+      "png_pixels": [
+        3544,
+        3355
+      ],
+      "dpi": 600.127,
+      "metadata_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "raster_images": 0,
+      "vector_paths": 28,
+      "fonts_embedded": true
+    },
+    {
+      "name": "symbol-coverage-build",
+      "category": "normal",
+      "passed": true,
+      "input": "bi source, 181 mm, 600 dpi.",
+      "expected": "Compile, inspect and render; preserve genuine review flags.",
+      "returncode": 2,
+      "status": "review-required",
+      "findings": [
+        "font-fallback",
+        "small-text"
+      ]
+    },
+    {
+      "name": "symbol-coverage-independent-inspection",
+      "category": "normal",
+      "passed": true,
+      "input": "PDF plus PNG checked with separate PDF engine.",
+      "expected": "Vector content, embedded fonts, correct size and PNG DPI.",
+      "png_pixels": [
+        4252,
+        3094
+      ],
+      "dpi": 600.0,
+      "metadata_dpi": [
+        599.9988,
+        599.9988
+      ],
+      "raster_images": 0,
+      "vector_paths": 2,
+      "fonts_embedded": true
+    },
+    {
+      "name": "academic-symbol-extraction",
+      "category": "normal",
+      "passed": true,
+      "input": "Greek, calculus, set, statistical and algebraic proof sheet.",
+      "expected": "No missing glyphs, replacement characters or substituted question marks; sample mappings preserved.",
+      "missing": []
+    },
+    {
+      "name": "absent-font",
+      "category": "boundary",
+      "passed": true,
+      "input": [
+        "--require-font",
+        "DefinitelyMissingTypeface"
+      ],
+      "expected": "required-font-absent",
+      "returncode": 1
+    },
+    {
+      "name": "wrong-language",
+      "category": "boundary",
+      "passed": true,
+      "input": [
+        "--language",
+        "zh"
+      ],
+      "expected": "expected-cjk-absent",
+      "returncode": 1
+    },
+    {
+      "name": "canvas-limit",
+      "category": "boundary",
+      "passed": true,
+      "input": [
+        "--max-width-mm",
+        50
+      ],
+      "expected": "canvas-limit",
+      "returncode": 1
+    },
+    {
+      "name": "page-count",
+      "category": "boundary",
+      "passed": true,
+      "input": [
+        "--expected-pages",
+        2
+      ],
+      "expected": "page-count",
+      "returncode": 1
+    },
+    {
+      "name": "minimum-text",
+      "category": "boundary",
+      "passed": true,
+      "input": [
+        "--min-text-pt",
+        15
+      ],
+      "expected": "small-text",
+      "returncode": 2
+    },
+    {
+      "name": "unexpected-han",
+      "category": "failure",
+      "passed": true,
+      "input": "Bilingual PDF as English.",
+      "expected": "Reject Han labels.",
+      "returncode": 1
+    },
+    {
+      "name": "missing-pdfium",
+      "category": "boundary",
+      "passed": true,
+      "input": "No site packages.",
+      "expected": "Partial verification.",
+      "returncode": 2
+    },
+    {
+      "name": "missing-pillow",
+      "category": "boundary",
+      "passed": true,
+      "input": "PDF engine present, image saver absent.",
+      "expected": "Inspection retained, PNG explicitly unverified.",
+      "returncode": 2
+    },
+    {
+      "name": "invalid-dpi-0",
+      "category": "failure",
+      "passed": true,
+      "input": "0",
+      "expected": "CLI rejection.",
+      "returncode": 2
+    },
+    {
+      "name": "invalid-dpi-1201",
+      "category": "failure",
+      "passed": true,
+      "input": "1201",
+      "expected": "CLI rejection.",
+      "returncode": 2
+    },
+    {
+      "name": "invalid-dpi-nan",
+      "category": "failure",
+      "passed": true,
+      "input": "nan",
+      "expected": "CLI rejection.",
+      "returncode": 2
+    },
+    {
+      "name": "preserve-input",
+      "category": "failure",
+      "passed": true,
+      "input": "Report path equals PDF input.",
+      "expected": "Reject without mutation.",
+      "returncode": 1
+    },
+    {
+      "name": "corrupt-pdf",
+      "category": "failure",
+      "passed": true,
+      "input": "Invalid PDF bytes.",
+      "expected": "Structured failure.",
+      "returncode": 1
+    },
+    {
+      "name": "rotated-bounds",
+      "category": "boundary",
+      "passed": true,
+      "input": "rotated page.",
+      "expected": "Native text bounds and rotated image dimensions handled.",
+      "returncode": 0,
+      "findings": []
+    },
+    {
+      "name": "cropped-bounds",
+      "category": "boundary",
+      "passed": true,
+      "input": "cropped page.",
+      "expected": "Native text bounds and rotated image dimensions handled.",
+      "returncode": 2,
+      "findings": [
+        "text-bounds"
+      ]
+    },
+    {
+      "name": "raster-budget",
+      "category": "failure",
+      "passed": true,
+      "input": "1200pt square at 1200 dpi.",
+      "expected": "Reject before bitmap allocation.",
+      "returncode": 1
+    },
+    {
+      "name": "raster-disclosure",
+      "category": "normal",
+      "passed": true,
+      "input": "Vector figure with one bitmap.",
+      "expected": "Disclose raster instead of calling it pure vector.",
+      "returncode": 0
+    },
+    {
+      "name": "font-embedding-warning",
+      "category": "boundary",
+      "passed": true,
+      "input": "Standard nonembedded Helvetica.",
+      "expected": "Flag embedding review.",
+      "returncode": 2
+    },
+    {
+      "name": "preview-limit",
+      "category": "boundary",
+      "passed": true,
+      "input": "Nine-page PDF.",
+      "expected": "Render only first eight and disclose limit.",
+      "returncode": 2
+    },
+    {
+      "name": "failed-compilation",
+      "category": "failure",
+      "passed": true,
+      "input": "Undefined TeX command.",
+      "expected": "Fail with preserved log, no fabricated PDF.",
+      "returncode": 1
+    },
+    {
+      "name": "missing-xelatex",
+      "category": "failure",
+      "passed": true,
+      "input": "PATH without XeLaTeX.",
+      "expected": "Fail explicitly; no automatic install.",
+      "returncode": 1
+    },
+    {
+      "name": "no-generic-execution",
+      "category": "failure",
+      "passed": true,
+      "input": "Unsupported execution mode.",
+      "expected": "CLI rejection.",
+      "returncode": 2
+    },
+    {
+      "name": "replacement-character-rejected",
+      "category": "failure",
+      "passed": true,
+      "input": "U+FFFD in active source.",
+      "expected": "Reject corrupted source before build.",
+      "returncode": 1
+    },
+    {
+      "name": "missing-glyph-rejected",
+      "category": "failure",
+      "passed": true,
+      "input": "Unsupported codepoint in real XeLaTeX build.",
+      "expected": "Fail even if the compiler emits a PDF.",
+      "returncode": 1
+    },
+    {
+      "name": "literal-question-preserved",
+      "category": "normal",
+      "passed": true,
+      "input": "Intentional question mark.",
+      "expected": "Do not misdiagnose ordinary punctuation as a missing symbol.",
+      "returncode": 0
+    },
+    {
+      "name": "english-font-override-no-cjk",
+      "category": "normal",
+      "passed": true,
+      "input": "English-only, Arial override, unavailable Chinese font.",
+      "expected": "Use actual Arial without needing CJK fonts.",
+      "returncode": 0
+    }
+  ],
+  "artifacts": {
+    "example-en": {
+      "language": "en",
+      "dpi": 600,
+      "pages": [
+        {
+          "page": 1,
+          "width_mm": 159.9988,
+          "height_mm": 88.0004,
+          "rotation": 0,
+          "minimum_text_tex_pt": 9.5,
+          "raster_image_count": 0,
+          "vector_path_count": 23
+        }
+      ],
+      "fonts": [
+        {
+          "name": "TFXPYU+TimesNewRomanPSMT",
+          "embedded": true,
+          "embedding_flag": 1
+        }
+      ],
+      "mechanical_status": "mechanical-checks-passed",
+      "visual_review": "Aligned parallel branches and clear orthogonal arrows; final merge concatenates matched windows. No clipped text observed. K and kPa remain distinct in the caption.",
+      "files": {
+        "tex": {
+          "name": "example-en.tex",
+          "sha256": "07f2aa904378bb9576a5bfd573edf55a9180e6a79b7905498d2ddc4b68106a77"
+        },
+        "pdf": {
+          "name": "example-en.pdf",
+          "sha256": "eb30152835af793d0256ab2ceb57db86f319ed9cdde53a55e9e85f42346e3d53"
+        },
+        "png": {
+          "name": "example-en.png",
+          "sha256": "3542068f8619096e494de1c124029b4e9ec3e7a06e4dca949e783a750413c03c"
+        }
+      }
+    },
+    "example-principle-bi": {
+      "language": "bi",
+      "dpi": 600,
+      "pages": [
+        {
+          "page": 1,
+          "width_mm": 148.0009,
+          "height_mm": 101.9986,
+          "rotation": 0,
+          "minimum_text_tex_pt": 6.65,
+          "raster_image_count": 0,
+          "vector_path_count": 18
+        }
+      ],
+      "fonts": [
+        {
+          "name": "CYPBWR+SimSun",
+          "embedded": true,
+          "embedding_flag": 1
+        },
+        {
+          "name": "JBDRRH+TimesNewRomanPSMT",
+          "embedded": true,
+          "embedding_flag": 1
+        },
+        {
+          "name": "IHCVKR+LatinModernMath-Regular",
+          "embedded": true,
+          "embedding_flag": 1
+        }
+      ],
+      "mechanical_status": "review-required",
+      "visual_review": "Physical junctions, resistance labels, heat-rate arrows and bilingual labels checked. Equations and caption agree on steady-state positive resistances. Small math scripts are readable; Latin Modern Math fallback disclosed.",
+      "files": {
+        "tex": {
+          "name": "example-principle-bi.tex",
+          "sha256": "b8d4c779928241603a4153fcbd61002471ce20bf23671150ddd8da0726e39a60"
+        },
+        "pdf": {
+          "name": "example-principle-bi.pdf",
+          "sha256": "6b3d7d8c8feb10856e8b12512174c00bf53a1e80715abf03142c30ca59866fc9"
+        },
+        "png": {
+          "name": "example-principle-bi.png",
+          "sha256": "cc7ee991d592763393e6e72cd82488678e9fd9bdccf227d9a81b36996e98ed5f"
+        }
+      }
+    },
+    "example-workflow-zh": {
+      "language": "zh",
+      "dpi": 300,
+      "pages": [
+        {
+          "page": 1,
+          "width_mm": 84.9983,
+          "height_mm": 56.9983,
+          "rotation": 0,
+          "minimum_text_tex_pt": 10.0,
+          "raster_image_count": 0,
+          "vector_path_count": 7
+        }
+      ],
+      "fonts": [
+        {
+          "name": "ZPAGCX+SimSun",
+          "embedded": true,
+          "embedding_flag": 1
+        }
+      ],
+      "mechanical_status": "mechanical-checks-passed",
+      "visual_review": "Three aligned Chinese action labels, even padding and clear downward arrows. No missing characters observed.",
+      "files": {
+        "tex": {
+          "name": "example-workflow-zh.tex",
+          "sha256": "152358677a9466062c278c6513d0d2782c12f021fa888d814e3a047144d1f4a3"
+        },
+        "pdf": {
+          "name": "example-workflow-zh.pdf",
+          "sha256": "e125175ce550eda4d494dcac79513dd0309578ac62c966f75b14d6116536e621"
+        },
+        "png": {
+          "name": "example-workflow-zh.png",
+          "sha256": "35604a0fa40dc3b9cc6ec50c182f41a4628523122a9d4ced485f5f3dd686fa8c"
+        }
+      }
+    },
+    "example-loop-en": {
+      "language": "en",
+      "dpi": 600,
+      "pages": [
+        {
+          "page": 1,
+          "width_mm": 149.9976,
+          "height_mm": 142.0001,
+          "rotation": 0,
+          "minimum_text_tex_pt": 6.65,
+          "raster_image_count": 0,
+          "vector_path_count": 28
+        }
+      ],
+      "fonts": [
+        {
+          "name": "NMNARQ+TimesNewRomanPSMT",
+          "embedded": true,
+          "embedding_flag": 1
+        },
+        {
+          "name": "YOBXCH+LatinModernMath-Regular",
+          "embedded": true,
+          "embedding_flag": 1
+        }
+      ],
+      "mechanical_status": "review-required",
+      "visual_review": "Decision question marks removed; conditions and Yes/No labels remain explicit. Both exits and the return to the update step are visible, without crossing nodes. Small math scripts reviewed.",
+      "files": {
+        "tex": {
+          "name": "example-loop-en.tex",
+          "sha256": "ed59f0b56a29b2c8443e602417d18c98632f33272b885e07738817bb8a476537"
+        },
+        "pdf": {
+          "name": "example-loop-en.pdf",
+          "sha256": "ad2fd9dde9ee80a1c97aa4530e5d3f92a963be725f54ee6bef59825a4e6fd07d"
+        },
+        "png": {
+          "name": "example-loop-en.png",
+          "sha256": "ba6e948eebf5eff7dc737de5bf5792ce2c929687c825b53c8f0d0c51f44f82dc"
+        }
+      }
+    },
+    "symbol-coverage": {
+      "language": "bi",
+      "dpi": 600,
+      "pages": [
+        {
+          "page": 1,
+          "width_mm": 180.0013,
+          "height_mm": 130.9405,
+          "rotation": 0,
+          "minimum_text_tex_pt": 7.0,
+          "raster_image_count": 0,
+          "vector_path_count": 2
+        }
+      ],
+      "fonts": [
+        {
+          "name": "TGNTWY+TimesNewRomanPSMT",
+          "embedded": true,
+          "embedding_flag": 1
+        },
+        {
+          "name": "LBZDUW+SimSun",
+          "embedded": true,
+          "embedding_flag": 1
+        },
+        {
+          "name": "QLRSSW+LatinModernMath-Regular",
+          "embedded": true,
+          "embedding_flag": 1
+        },
+        {
+          "name": "MGEUQL+LMSans8-Regular",
+          "embedded": true,
+          "embedding_flag": 1
+        }
+      ],
+      "mechanical_status": "review-required",
+      "visual_review": "Greek variants, relations, calculus, probability, alphabets, arrows, accents, matrices and Chinese punctuation visually compared with source. No replacement boxes, substituted question marks or missing glyphs observed. Formula scripts remain smaller than body text.",
+      "files": {
+        "tex": {
+          "name": "symbol-coverage.tex",
+          "sha256": "20a32044e479f151996155bb8756ebfef233b8fd01c39b719282842c6448286e"
+        },
+        "pdf": {
+          "name": "symbol-coverage.pdf",
+          "sha256": "c59a495d7b8a1365cb2199523cc9daebf1f2bcdabd983ea287c7534b6ab41511"
+        },
+        "png": {
+          "name": "symbol-coverage.png",
+          "sha256": "f98d670622f135934350315949e8eb835adf3f95491f30e2de534ca04da47603"
+        }
+      }
+    }
+  },
+  "scope": "Local isolated-helper tests with real XeLaTeX, PDFium and independent PDF oracle. Not live marketplace or external human blind testing.",
+  "helper_sha256": "3a322f02e46855b50a4e5c4976200fd20b69886bd386cc0ffaf567f6a5aac7f1"
+}

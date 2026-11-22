@@ -1,0 +1,15 @@
+Scientific TikZ Figures - Marketplace Use Licence, version 1.0
+
+Licensor: the creator identified on the official marketplace listing from which this package is lawfully obtained. Rights are reserved to the extent held by that creator. This is a proprietary distribution notice, not an open-source licence.
+
+1. Authorised use. A lawful user may use this skill through the agent and delivery mechanism authorised by the listing platform, subject to that platform's applicable access terms. Temporary script execution needed for that use is permitted where the platform permits it. The creator may use and develop the source locally.
+
+2. Figure outputs. To the extent of the licensor's rights, users may retain, edit, publish and commercially use figures, captions and editable figure source generated for them, including adapted example figure templates. This output permission does not cover the skill instructions, helper scripts or reference library themselves, and does not replace rights required for third-party fonts, inputs or artwork.
+
+3. Redistribution. No permission is granted to redistribute, sublicense or resell the package, helper scripts, instructions or reference library, or to repackage them as another skill or competing template library. Additional distribution rights require the creator's permission. Platform delivery and mandatory rights under applicable law remain unaffected.
+
+4. Third parties. Separately installed dependencies retain their own licences. See THIRD-PARTY-NOTICES.txt. This notice does not restrict rights independently granted by those licences.
+
+5. Limits. The skill is provided as available, without a guarantee of scientific correctness, journal acceptance, marketplace approval or freedom from copying. Any disclaimer applies only to the extent permitted by applicable law. Authors remain responsible for checking scientific claims and submission requirements.
+
+This notice grants no right to use another person's identity or trademarks and does not assert copyright in material that is not protectable under applicable law.
